@@ -19,6 +19,12 @@ int main(void) {
 
         ClearBackground(BLACK);
 
+        for (int i = 0; i < n; i++) {
+            int height = nums[i] * SCALE;
+            DrawRectangle(200 + i * (RECTANGLE_WIDTH + GAP), HEIGHT - height,
+                          RECTANGLE_WIDTH, height, WHITE);
+        }
+
         EndDrawing();
     }
 
