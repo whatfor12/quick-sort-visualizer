@@ -3,13 +3,12 @@
 #define WIDTH 800
 #define HEIGHT 600
 
-#define SCALE 10
+#define SCALE 25
 #define RECTANGLE_WIDTH 30
 #define GAP 5
 
 int main(void) {
-    int nums[] = {5, 13, 6, 9, 12, 11, 8};
-    int n = sizeof(nums) / sizeof(int);
+    int nums[] = {7, 3};
 
     InitWindow(WIDTH, HEIGHT, "Quick sort visualizer");
     SetTargetFPS(60);
@@ -19,7 +18,13 @@ int main(void) {
 
         ClearBackground(BLACK);
 
-        for (int i = 0; i < n; i++) {
+        if (IsKeyPressed(KEY_SPACE)) {
+            int temp = nums[1];
+            nums[1] = nums[0];
+            nums[0] = temp;
+        }
+
+        for (int i = 0; i < 2; i++) {
             int height = nums[i] * SCALE;
             DrawRectangle(200 + i * (RECTANGLE_WIDTH + GAP), HEIGHT - height,
                           RECTANGLE_WIDTH, height, WHITE);
