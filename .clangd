@@ -1,0 +1,6 @@
+CompileFlags:
+  Add:
+    - -Wall
+    - -Wextra
+    - -IC:/raylib/raylib/src
+  Compiler: C:/ProgramData/mingw64/mingw64/bin/gcc.exe
