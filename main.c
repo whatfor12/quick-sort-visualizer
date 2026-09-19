@@ -22,9 +22,46 @@ void swap(int *a, int *b) {
     *b = temp;
 }
 
+void fill_coords(int arr[], int n) {
+    for (int i = 0; i < n; i++) {
+        arr[i] = 200 + i * (RECTANGLE_WIDTH + GAP);
+    }
+}
+
+void move_rectangles(bool is_moving, int speed, int i, int j, int coords[],
+                     int target_i, int target_j) {
+    if (!is_moving) {
+        return;
+    }
+
+    if (coords[i] < target_i) {
+        coords[i] += speed;
+    }
+
+    if (coords[i] > target_i) {
+        coords[i] -= speed;
+    }
+
+    if (coords[j] < target_j) {
+        coords[j] += speed;
+    }
+
+    if (coords[j] > target_j) {
+        coords[j] -= speed;
+    }
+}
+
 int main(void) {
-    int nums[2] = {7, 3};
-    int coords[2] = {200, 240};
+    int nums[] = {5, 13, 6, 9, 12, 11, 8};
+    int len = sizeof(nums) / sizeof(int);
+
+    int coords[len];
+
+    int target_i;
+    int target_j;
+
+    fill_coords(coords, len);
+
     int speed = 1;
     bool moving = false;
 
@@ -37,10 +74,15 @@ int main(void) {
         ClearBackground(BLACK);
 
         if (IsKeyPressed(KEY_SPACE)) {
+            target_i = coords[4];
+            target_j = coords[1];
+
             moving = true;
         }
 
-        for (int i = 0; i < 2; i++) {
+        move_rectangles(moving, speed, 1, 4, coords, target_i, target_j);
+
+        for (int i = 0; i < len; i++) {
             int height = nums[i] * SCALE;
             Rect newRect = {.x = coords[i],
                             .y = HEIGHT - height,
@@ -48,22 +90,8 @@ int main(void) {
                             .height = height,
                             .color = WHITE};
 
-            if (moving) {
-                if (i == 0 && coords[i] != 240)
-                    coords[i] += speed;
-
-                if (i == 1 && coords[i] != 200)
-                    coords[i] -= speed;
-            }
-
             DrawRectangle(newRect.x, newRect.y, newRect.width, newRect.height,
                           newRect.color);
-        }
-
-        if (moving && coords[0] == 240 && coords[1] == 200) {
-            swap(&nums[0], &nums[1]);
-            swap(&coords[0], &coords[1]);
-            moving = false;
         }
 
         EndDrawing();
