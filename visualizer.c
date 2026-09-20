@@ -22,12 +22,8 @@ void fill_coords(int arr[], int n) {
     }
 }
 
-void move_rectangles(bool is_moving, int speed, int i, int j, int coords[],
-                     int target_i, int target_j) {
-    if (!is_moving) {
-        return;
-    }
-
+void move_rectangles(int speed, int i, int j, int coords[], int target_i,
+                     int target_j) {
     if (coords[i] < target_i) {
         coords[i] += speed;
     }

@@ -1,8 +1,6 @@
 #ifndef VISUALIZER
 #define VISUALIZER
 
-#include <stdbool.h>
-
 #define WIDTH 800
 #define HEIGHT 600
 
@@ -12,7 +10,7 @@ void set_target(int i, int j, int *target_i, int *target_j, int coords[]);
 
 void draw_rectangles(int *nums, int n, int *coords);
 
-void move_rectangles(bool is_moving, int speed, int i, int j, int coords[],
-                     int target_i, int target_j);
+void move_rectangles(int speed, int i, int j, int coords[], int target_i,
+                     int target_j);
 
 #endif
