@@ -51,6 +51,11 @@ void move_rectangles(bool is_moving, int speed, int i, int j, int coords[],
     }
 }
 
+void set_target(int i, int j, int *target_i, int *target_j, int coords[]) {
+    *target_i = coords[j];
+    *target_j = coords[i];
+}
+
 int main(void) {
     int nums[] = {5, 13, 6, 9, 12, 11, 8};
     int len = sizeof(nums) / sizeof(int);
@@ -74,8 +79,7 @@ int main(void) {
         ClearBackground(BLACK);
 
         if (IsKeyPressed(KEY_SPACE)) {
-            target_i = coords[4];
-            target_j = coords[1];
+            set_target(1, 4, &target_i, &target_j, coords);
 
             moving = true;
         }
