@@ -35,14 +35,7 @@ int main(void) {
     int arr[] = {5, 13, 6, 9, 12, 11, 8};
     int n = sizeof(arr) / sizeof(int);
 
-    for (int i = 0; i < n; i++)
-        printf("%d ", arr[i]);
-    printf("\n");
-
     quick_sort(arr, 0, n - 1);
-
-    for (int i = 0; i < n; i++)
-        printf("%d ", arr[i]);
 
     return 0;
 }
