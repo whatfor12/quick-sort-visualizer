@@ -1,5 +1,3 @@
-#include <stdio.h>
-
 void swap(int *a, int *b) {
     int temp = *a;
     *a = *b;
@@ -29,13 +27,4 @@ void quick_sort(int *arr, int left, int right) {
         quick_sort(arr, left, partition_index - 1);
         quick_sort(arr, partition_index + 1, right);
     }
-}
-
-int main(void) {
-    int arr[] = {5, 13, 6, 9, 12, 11, 8};
-    int n = sizeof(arr) / sizeof(int);
-
-    quick_sort(arr, 0, n - 1);
-
-    return 0;
 }
